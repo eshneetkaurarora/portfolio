@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #05050a;
+  --color-bg-soft: #0d0d16;
+  --color-surface: #12121e;
+  --color-border: #24243a;
+  --color-text: #e9e9f5;
+  --color-muted: #8d8da8;
+  --color-accent: #7c5cff;
+  --color-accent-2: #ff5cad;
+  --color-accent-3: #5ce1ff;
+  --shadow-glow: 0 20px 45px -18px rgba(124, 92, 255, 0.35);
+
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+[data-theme="light"] {
+  --color-bg: #faf9ff;
+  --color-bg-soft: #f1eefc;
+  --color-surface: #ffffff;
+  --color-border: #e4dff5;
+  --color-text: #16142b;
+  --color-muted: #5b5678;
+  --color-accent: #6d3ff2;
+  --color-accent-2: #d6127f;
+  --color-accent-3: #0284c7;
+  --shadow-glow: 0 20px 45px -20px rgba(109, 63, 242, 0.25);
+}
+
+[data-theme="light"] body {
+  background:
+    radial-gradient(circle at 12% 8%, rgba(109, 63, 242, 0.1), transparent 55%),
+    radial-gradient(circle at 88% 4%, rgba(214, 18, 127, 0.08), transparent 50%),
+    radial-gradient(circle at 50% 80%, rgba(2, 132, 199, 0.07), transparent 55%),
+    var(--color-bg);
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+@media (max-width: 900px), (hover: none) {
+  body {
+    cursor: auto;
+  }
+}
+
+::selection {
+  background: var(--color-accent);
+  color: white;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-accent) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 999px;
+}
+
+.text-gradient {
+  background: linear-gradient(120deg, var(--color-accent), var(--color-accent-2) 50%, var(--color-accent-3));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-shift 6s ease-in-out infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 40;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
