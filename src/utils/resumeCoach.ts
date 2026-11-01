@@ -98,31 +98,31 @@ export function analyzeResume(raw: string): ResumeReport {
 
     const weakStart = startsWeak(text);
     if (weakStart) {
-      issues.push({ type: "weak-starter", message: `Starts with a weak phrase ("${weakStart}") — open with a strong action verb instead.` });
+      issues.push({ type: "weak-starter", message: `Starts with a weak phrase ("${weakStart}"). Open with a strong action verb instead.` });
       deductions += 6;
     }
 
     if (!hasMetric(text)) {
-      issues.push({ type: "no-metric", message: "No number here — how much, how many, how fast, or by what percent?" });
+      issues.push({ type: "no-metric", message: "No number here. How much, how many, how fast, or by what percent?" });
       deductions += 8;
     }
 
     if (isPassive(text)) {
-      issues.push({ type: "passive-voice", message: "Reads as passive voice — make yourself the subject of the sentence." });
+      issues.push({ type: "passive-voice", message: "Reads as passive voice. Make yourself the subject of the sentence." });
       deductions += 5;
     }
 
     const filler = findFiller(text);
     if (filler) {
-      issues.push({ type: "filler-phrase", message: `"${filler}" is a filler phrase — replace it with evidence that shows it instead.` });
+      issues.push({ type: "filler-phrase", message: `"${filler}" is a filler phrase. Replace it with evidence that shows it instead.` });
       deductions += 10;
     }
 
     if (wordCount < 5) {
-      issues.push({ type: "too-short", message: "Pretty thin — add enough context that a stranger understands the impact." });
+      issues.push({ type: "too-short", message: "Pretty thin. Add enough context that a stranger understands the impact." });
       deductions += 4;
     } else if (wordCount > 32) {
-      issues.push({ type: "too-long", message: "Long bullet — consider splitting into two, or tightening it." });
+      issues.push({ type: "too-long", message: "Long bullet. Consider splitting into two, or tightening it." });
       deductions += 3;
     }
 
@@ -135,10 +135,10 @@ export function analyzeResume(raw: string): ResumeReport {
     bullets.length === 0
       ? "Paste your resume bullets (one per line) to get feedback."
       : score >= 80
-      ? "Strong draft — mostly small polish left."
+      ? "Strong draft, with only small polish left."
       : score >= 60
       ? "Good foundation, but a few bullets need real rework."
-      : "Needs a solid pass — focus on metrics and action verbs first.";
+      : "Needs a solid pass. Focus on metrics and action verbs first.";
 
   const usedStrongVerb = new Set(
     bullets.map((b) => b.split(/\s+/)[0]).filter((w) => STRONG_VERBS.includes(w))

@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
-import { FiArrowDown, FiLinkedin, FiMail, FiFileText } from "react-icons/fi";
+import { FiArrowDown, FiCompass } from "react-icons/fi";
 import MagneticButton from "./MagneticButton";
 
-const ROLE_WORDS = ["Software Engineer @ Adobe", "Systems Thinker", "Aspiring Product Leader", "Builder at Heart"];
+const ROLE_WORDS = ["Member of Technical Staff 2 at Adobe", "Systems Thinker", "Mentor & Mountain Person", "Builder at Heart"];
 
 function AnimatedRole() {
   return (
-    <div className="h-8 overflow-hidden text-lg font-medium text-muted md:text-xl">
+    <div className="h-8 overflow-hidden text-base font-medium text-muted sm:text-lg md:text-xl">
       <motion.div
         animate={{ y: [0, -32, -64, -96, 0] }}
         transition={{ duration: 8, times: [0, 0.25, 0.5, 0.75, 1], repeat: Infinity, ease: "easeInOut" }}
@@ -44,7 +44,8 @@ export default function Hero() {
         />
       </div>
 
-      <div className="mx-auto w-full max-w-6xl">
+      <div className="mx-auto grid w-full max-w-6xl items-center gap-12 py-12 md:grid-cols-[1.3fr_1fr]">
+        <div>
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -73,16 +74,28 @@ export default function Hero() {
           <AnimatedRole />
         </motion.div>
 
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.1 }}
-          className="mt-6 max-w-xl text-base text-muted md:text-lg"
+          className="mt-6 max-w-xl space-y-4 text-base text-muted md:text-lg"
         >
-          I write production code at Adobe — and I'm just as happy in the room where we decide
-          what gets built. Lately that's meant sketching architecture next to a director, reading
-          A/B test results, and mentoring the next person up. I'm now formalizing that shift.
-        </motion.p>
+          <p>
+            I&apos;m an electrical engineer by degree and a software engineer by trade, now building the
+            Creative Cloud Desktop experience at Adobe.
+          </p>
+          <p className="text-sm md:text-base">
+            At Oracle, I put my hand up to help scope a brand new module. It was
+            the first time I started from a blank page, and it is where my interest in product management began.
+          </p>
+          <p className="flex items-start gap-2 text-sm md:text-base">
+            <FiCompass className="mt-1 shrink-0 text-accent" />
+            <span>
+              I like to understand the person I&apos;m building for. Outside work, you&apos;ll usually find me
+              on a mountain trail with my camera, dancing, or helping someone find their feet.
+            </span>
+          </p>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -102,23 +115,28 @@ export default function Hero() {
           >
             Get in Touch
           </MagneticButton>
-
-          <div className="ml-2 flex items-center gap-4 text-muted">
-            <MagneticButton href="https://linkedin.com/in/eshneet-kaur-arora-3ba665191" className="grid h-10 w-10 place-items-center rounded-full border border-border hover:border-accent hover:text-accent" >
-              <FiLinkedin size={17} />
-            </MagneticButton>
-            <MagneticButton href="mailto:eshneetkaurarora@gmail.com" className="grid h-10 w-10 place-items-center rounded-full border border-border hover:border-accent hover:text-accent">
-              <FiMail size={17} />
-            </MagneticButton>
-            <MagneticButton href="/resume.pdf" className="grid h-10 w-10 place-items-center rounded-full border border-border hover:border-accent hover:text-accent">
-              <FiFileText size={17} />
-            </MagneticButton>
-          </div>
         </motion.div>
+        </div>
+
+        <motion.figure
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.7 }}
+          className="mx-auto w-full max-w-sm overflow-hidden rounded-2xl border border-border bg-surface shadow-[var(--shadow-glow)] md:max-w-none"
+        >
+          <img
+            src="/photos/hero/portrait.jpg"
+            alt="Portrait of Eshneet smiling in a pink sweater and a floral headband"
+            width={1179}
+            height={1356}
+            className="aspect-[4/5] w-full object-cover object-[50%_25%]"
+          />
+          <figcaption className="px-6 py-4 text-sm text-muted">Engineer, mentor, and mountain person.</figcaption>
+        </motion.figure>
       </div>
 
       <motion.a
-        href="#about"
+        href="#experience"
         data-cursor="hover"
         aria-label="Scroll down"
         className="absolute bottom-10 left-1/2 -translate-x-1/2 text-muted"

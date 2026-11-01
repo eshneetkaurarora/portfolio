@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
-import { FiAlertCircle, FiArrowLeft, FiClock, FiMapPin, FiTrendingUp } from "react-icons/fi";
+import { FiArrowLeft, FiArrowRight, FiClock, FiCompass, FiMapPin, FiTrendingUp } from "react-icons/fi";
 import Reveal from "../components/Reveal";
-import Sparkline from "../components/Sparkline";
 import TiltCard from "../components/TiltCard";
 import { TRIPS } from "../data/trips";
 
@@ -15,20 +14,15 @@ export default function TripDiaries() {
       </Reveal>
 
       <Reveal delay={0.05} className="mb-14">
-        <p className="mb-3 font-mono text-sm uppercase tracking-widest text-accent">Side Project</p>
+        <p className="mb-3 font-mono text-sm uppercase tracking-widest text-accent">Away from the screen</p>
         <h1 className="text-3xl font-bold tracking-tight md:text-4xl">Trip Diaries</h1>
         <p className="mt-3 max-w-xl text-muted">
-          Every trek I do ends up with the same three things: a GPX file full of numbers, a camera roll, and a
-          story I tell too many times. This is where I keep all three together.
+          Triund, Prashar Lake, Hemkund Sahib, and Kareri Lake, a growing collection of places
+          I've walked, with a few moments from my camera roll.
         </p>
-      </Reveal>
-
-      <Reveal className="mb-10 flex items-start gap-3 rounded-2xl border border-dashed border-accent/40 bg-accent/5 p-4 text-sm text-muted">
-        <FiAlertCircle className="mt-0.5 shrink-0 text-accent" />
-        <span>
-          The entries below are sample placeholders so the page has something to show. Real trips (with real photos,
-          stats, and stories) go in <code className="rounded bg-bg-soft px-1.5 py-0.5 font-mono text-xs">src/data/trips.ts</code>.
-        </span>
+        <p className="mt-3 text-xs text-muted">
+          Altitudes and uphill trek times are approximate route estimates. Route details and references are on each trip page.
+        </p>
       </Reveal>
 
       <div className="grid gap-6 md:grid-cols-2">
@@ -36,28 +30,37 @@ export default function TripDiaries() {
           <Reveal key={trip.id} delay={i * 0.08}>
             <Link to={`/trip-diaries/${trip.id}`} data-cursor="hover" className="block h-full">
               <TiltCard className="h-full cursor-pointer">
-                {trip.isSample && (
-                  <span className="mb-3 inline-block rounded-full bg-accent-2/15 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-accent-2">
-                    Sample
-                  </span>
+                {trip.photos[0] ? (
+                  <img
+                    src={trip.photos[0].src}
+                    alt={trip.photos[0].alt}
+                    width={960}
+                    height={1280}
+                    loading="lazy"
+                    className="mb-5 aspect-[4/3] w-full rounded-xl object-cover object-[center_60%]"
+                  />
+                ) : (
+                  <div className="mb-5 flex aspect-[4/3] flex-col items-center justify-center gap-4 rounded-xl bg-gradient-to-br from-accent/20 to-accent-3/10">
+                    <FiCompass size={44} className="text-accent" aria-hidden="true" />
+                    <p className="font-mono text-xs uppercase tracking-widest text-muted">Himachal Pradesh</p>
+                  </div>
                 )}
-                <h3 className="mb-1 text-xl font-bold text-text">{trip.title}</h3>
+                <h2 className="mb-1 text-xl font-bold text-text">{trip.title}</h2>
                 <p className="mb-4 flex items-center gap-1.5 text-sm text-muted">
-                  <FiMapPin size={13} /> {trip.location} · {trip.date}
+                  <FiMapPin size={13} className="shrink-0" /> {trip.location}
                 </p>
-
-                <Sparkline data={trip.elevationProfile} className="mb-4 h-16 w-full" />
-
-                <div className="flex flex-wrap gap-4 text-sm">
-                  <span className="flex items-center gap-1.5 text-text/90">
-                    <FiTrendingUp className="text-accent" /> {trip.elevationGainM}m gain
+                <div className="mb-4 flex flex-wrap gap-x-5 gap-y-2 text-sm text-text/90">
+                  <span className="inline-flex items-center gap-1.5">
+                    <FiTrendingUp className="text-accent" /> ~{trip.altitudeM.toLocaleString("en-IN")} m altitude
                   </span>
-                  <span className="flex items-center gap-1.5 text-text/90">
-                    <FiClock className="text-accent" /> {trip.durationHours}h · {trip.distanceKm}km
+                  <span className="inline-flex items-center gap-1.5">
+                    <FiClock className="text-accent" /> {trip.ascentTime} uphill
                   </span>
                 </div>
-
-                <p className="mt-4 line-clamp-2 text-sm text-muted">{trip.memory}</p>
+                <p className="text-sm text-muted">{trip.description}</p>
+                <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-accent">
+                  Explore the trip <FiArrowRight size={14} />
+                </span>
               </TiltCard>
             </Link>
           </Reveal>

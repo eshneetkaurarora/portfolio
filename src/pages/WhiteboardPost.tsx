@@ -13,68 +13,37 @@ export default function WhiteboardPost() {
 
       <Reveal delay={0.05}>
         <p className="mb-3 font-mono text-sm uppercase tracking-widest text-accent">Writing</p>
-        <h1 className="text-3xl font-bold tracking-tight md:text-4xl">What a Blank Whiteboard Taught Me About Wanting to Lead</h1>
+        <h1 className="text-3xl font-bold tracking-tight md:text-4xl">The Blank Whiteboard That Got Me Into Product Thinking</h1>
         <p className="mt-3 text-sm text-muted">Eshneet Kaur Arora</p>
       </Reveal>
 
       <Reveal delay={0.12} className="prose-content mt-10 space-y-5 text-[15px] leading-relaxed text-text/90 md:text-base">
         <p>
-          Two years into my job at Oracle Financial Services Software, my director asked if I wanted to help scope
-          a new module for our SaaS rule-creation platform. Not build it — scope it. I remember being surprised by
-          the question, because up to that point my job had mostly been answering a different one: here is the spec,
-          how do we build it.
+          About two years into my time at Oracle, my manager asked the team if anyone wanted to volunteer for a new module that was being scoped. We would be helping build a proof of concept (POC). I volunteered straight away. Until then, every project I had worked on came with the problem already defined. Someone else had decided what to build, and my job was to work out how. This was the first time I could start something from scratch, and that is what pulled me in.
         </p>
 
         <p>
-          The module needed a way for non-technical users to create and manage business rules without writing code
-          — an execution framework, configurable rule sets, a UI for all of it. There was no existing system to
-          extend. Just a whiteboard, a director with fifteen more years of experience than me, and a genuinely open
-          question: what should this even look like?
+          The module was part of a SaaS rule-creation platform. It had to let people who don&apos;t write code create and manage business rules on their own. There was nothing existing to build on. All we had was a whiteboard and a meeting with the engineering director.
         </p>
 
         <p>
-          I want to be honest about what that first meeting actually felt like, because it wasn't triumphant. It was
-          uncomfortable. When you're used to being handed a well-defined problem, "figure out what the problem is"
-          is a different muscle entirely. I remember reaching for the safest option in the room — sketching
-          something close to a system I'd already seen — before catching myself and asking a more useful question
-          instead: who actually uses this, and what does "done" look like for them?
+          I&apos;ll be honest, that first meeting was uncomfortable. I was used to getting a clear problem, and now I had to figure out what the problem even was. I caught myself reaching for the safe option, which was to sketch something similar to a system I had already seen. Then I stopped and asked a different question: who is actually going to use this, and what does &quot;done&quot; mean to them?
         </p>
 
         <p>
-          That question changed the conversation. We weren't just designing an execution engine anymore; we were
-          designing for a business analyst who had never written a line of code and needed to trust that the rule
-          she configured on Tuesday would run correctly in production on Friday. That single constraint — trust
-          without code literacy — is what eventually led us to build in Optimistic Concurrency Control from the
-          start, using versioning instead of locking, so two people editing the same rule set would never silently
-          overwrite each other's work. It wasn't in the original brief. It came out of actually sitting with the
-          problem instead of jumping to the solution.
+          We didn&apos;t have a neat answer that day. But the question stayed with us, and the conversations that followed kept coming back to it. We talked less about what the engine should do and more about the person using it: someone who has never written code, and still has to trust that the rules they set up will behave the way they expect. The first thing we drew together was what that person would see on screen. Prototypes, API specs and the task breakdown all came after.
         </p>
 
         <p>
-          From there, the work looked more familiar: Figma prototypes, API specs, breaking the module into tasks a
-          team could actually execute against. I built the execution framework, the configurable rule sets, and a
-          chunk of the UI myself — including a hashing-based duplication detector that cut redundant rule
-          processing by 70%, which remains one of the pieces of this project I'm most proud of. But by the time we
-          shipped, the part that stuck with me wasn't the code. It was the fact that I could trace almost every
-          engineering decision back to that first whiteboard conversation about a person who'd never use our API
-          directly.
+          Small decisions kept coming from the same place as we built. One of them was what should happen when two people edit the same set of rules at once. We settled on versioning, so that nobody&apos;s work gets silently overwritten. None of that was in the original spec. It came up because we kept picturing real people using the thing.
         </p>
 
         <p>
-          I've thought about that gap a lot since — the gap between building what you're told to build and deciding
-          what should exist in the first place. Both are real skills. I'm good at the first one; Oracle is proof of
-          that, and so is the work I do now at Adobe on a product line that generates $16M in revenue. But the
-          whiteboard is the part I keep wanting more of. Being in the room for the "why" changes how you write the
-          "how" — you stop optimizing for what's technically elegant and start optimizing for what the actual human
-          on the other end needs to be true.
+          I built the execution framework, the configurable rule sets and part of the interface. By the time we shipped, though, what stayed with me was not the code. I could trace most of what we had built back to that uncomfortable first conversation at the whiteboard.
         </p>
 
         <p>
-          That's the honest version of why I'm applying to MEM and MISM programs. Not because I want to stop
-          building — I don't, and I don't think I ever will. But because I want to formalize the instinct I
-          stumbled into on that whiteboard: the ability to sit with an ambiguous problem, ask better questions
-          before reaching for a solution, and make the structural decisions that everything else gets built on top
-          of. I got a taste of that by accident once. I'd like to get much better at it on purpose.
+          That is where my interest in product management began. I realised I enjoyed asking what we should build, and why, as much as building it. I still love building things. But I now see that the work starts before the first line of code, and it doesn&apos;t end when the feature ships. I want to keep growing into someone who can take on a vague problem, ask better questions first, and keep the people who will use the product in mind.
         </p>
       </Reveal>
     </article>

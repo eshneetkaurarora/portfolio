@@ -20,6 +20,10 @@ html {
   scroll-behavior: smooth;
 }
 
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
 [data-theme="light"] {
   --color-bg: #faf9ff;
   --color-bg-soft: #f1eefc;

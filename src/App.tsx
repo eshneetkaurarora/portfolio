@@ -3,6 +3,7 @@ import CustomCursor from "./components/CustomCursor";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import ScrollProgress from "./components/ScrollProgress";
+import RouteScroll from "./components/RouteScroll";
 import { ThemeProvider } from "./context/ThemeContext";
 import Home from "./pages/Home";
 import ResumeCoach from "./pages/ResumeCoach";
@@ -14,6 +15,7 @@ export default function App() {
   return (
     <ThemeProvider>
       <BrowserRouter>
+        <RouteScroll />
         <div className="grain min-h-screen bg-bg text-text">
           <CustomCursor />
           <ScrollProgress />

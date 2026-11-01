@@ -1,7 +1,6 @@
 import { Link, useParams } from "react-router-dom";
-import { FiArrowLeft, FiCamera, FiClock, FiMapPin, FiTrendingUp } from "react-icons/fi";
+import { FiArrowLeft, FiCamera, FiMapPin } from "react-icons/fi";
 import Reveal from "../components/Reveal";
-import Sparkline from "../components/Sparkline";
 import { TRIPS } from "../data/trips";
 
 export default function TripDiaryDetail() {
@@ -19,8 +18,6 @@ export default function TripDiaryDetail() {
     );
   }
 
-  const pace = (trip.durationHours / trip.distanceKm).toFixed(2);
-
   return (
     <section className="mx-auto max-w-3xl px-6 py-28">
       <Reveal className="mb-8">
@@ -30,59 +27,71 @@ export default function TripDiaryDetail() {
       </Reveal>
 
       <Reveal delay={0.05}>
-        {trip.isSample && (
-          <span className="mb-3 inline-block rounded-full bg-accent-2/15 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-accent-2">
-            Sample Entry
-          </span>
-        )}
         <h1 className="text-3xl font-bold tracking-tight md:text-4xl">{trip.title}</h1>
         <p className="mt-2 flex items-center gap-1.5 text-muted">
-          <FiMapPin size={14} /> {trip.location} · {trip.date}
+          <FiMapPin size={14} className="shrink-0" /> {trip.location}
         </p>
+        <p className="mt-6 leading-relaxed text-muted">{trip.description}</p>
       </Reveal>
 
-      <Reveal delay={0.1} className="my-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
-        {[
-          { label: "Distance", value: `${trip.distanceKm} km` },
-          { label: "Elevation Gain", value: `${trip.elevationGainM} m` },
-          { label: "Duration", value: `${trip.durationHours} h` },
-          { label: "Pace", value: `${pace} h/km` },
-        ].map((stat) => (
-          <div key={stat.label} className="rounded-2xl border border-border bg-surface p-4 text-center shadow-[var(--shadow-glow)]">
-            <p className="text-lg font-bold text-accent">{stat.value}</p>
-            <p className="mt-1 font-mono text-[10px] uppercase tracking-widest text-muted">{stat.label}</p>
+      <Reveal delay={0.1} className="mt-8 rounded-2xl border border-border bg-surface p-6">
+        <h2 className="text-lg font-bold text-text">The route at a glance</h2>
+        <p className="mt-2 text-sm text-muted">{trip.route}</p>
+        <dl className="mt-5 grid gap-4 sm:grid-cols-2">
+          <div>
+            <dt className="font-mono text-xs uppercase tracking-widest text-muted">Altitude</dt>
+            <dd className="mt-1">
+              <span className="text-xl font-bold text-accent">~{trip.altitudeM.toLocaleString("en-IN")} m</span>
+              <span className="mt-1 block text-xs text-muted">Above sea level, not elevation gain</span>
+            </dd>
           </div>
-        ))}
-      </Reveal>
-
-      <Reveal delay={0.15} className="mb-10 rounded-2xl border border-border bg-surface p-6 shadow-[var(--shadow-glow)]">
-        <p className="mb-3 flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted">
-          <FiTrendingUp /> Elevation Profile
+          <div>
+            <dt className="font-mono text-xs uppercase tracking-widest text-muted">Trek time</dt>
+            <dd className="mt-1">
+              <span className="text-xl font-bold text-accent">{trip.ascentTime}</span>
+              <span className="mt-1 block text-xs text-muted">Typical uphill walking time, excluding the return</span>
+            </dd>
+          </div>
+        </dl>
+        <p className="mt-5 text-xs leading-relaxed text-muted">
+          Approximate route figures; timings vary with pace, breaks, and conditions.
         </p>
-        <Sparkline data={trip.elevationProfile} className="h-28 w-full" />
-      </Reveal>
-
-      <Reveal delay={0.2} className="mb-10">
-        <h2 className="mb-3 text-lg font-bold text-text">Core Memory</h2>
-        <p className="leading-relaxed text-muted">{trip.memory}</p>
-      </Reveal>
-
-      <Reveal delay={0.25}>
-        <h2 className="mb-3 flex items-center gap-2 text-lg font-bold text-text">
-          <FiCamera /> Photos
-        </h2>
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
-          {trip.photos.map((photo, i) => (
-            <div
-              key={i}
-              className="group relative flex aspect-square items-center justify-center overflow-hidden rounded-xl border border-dashed border-border bg-gradient-to-br from-accent/15 to-accent-3/10"
-            >
-              {/* Replace with <img src="/trips/{trip.id}/photo-1.jpg" className="absolute inset-0 h-full w-full object-cover" /> */}
-              <FiCamera className="text-text/30" size={22} />
-              <span className="absolute inset-x-0 bottom-0 bg-bg/80 p-2 text-center text-xs text-muted">{photo.caption}</span>
-            </div>
+        <div className="mt-3 flex flex-wrap gap-x-4 gap-y-2">
+          {trip.sources.map((source) => (
+            <a key={source.url} href={source.url} target="_blank" rel="noopener noreferrer" className="text-xs text-accent underline underline-offset-4 hover:text-accent-2">
+              {source.label}
+            </a>
           ))}
         </div>
+      </Reveal>
+
+      {trip.photos.length > 0 && (
+        <Reveal delay={0.15} className="mt-10">
+          <h2 className="mb-4 flex items-center gap-2 text-lg font-bold text-text">
+            <FiCamera /> From my camera roll
+          </h2>
+          <div className={`grid gap-6 ${trip.photos.length > 1 ? "sm:grid-cols-2" : ""}`}>
+            {trip.photos.map((photo) => (
+              <figure key={photo.src} className="overflow-hidden rounded-2xl border border-border bg-surface">
+                <img
+                  src={photo.src}
+                  alt={photo.alt}
+                  width={960}
+                  height={1280}
+                  loading="lazy"
+                  className="h-auto w-full"
+                />
+                <figcaption className="p-4 text-sm text-muted">{photo.caption}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </Reveal>
+      )}
+
+      <Reveal delay={0.2} className="mt-10">
+        <Link to="/trip-diaries" className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent-2">
+          <FiArrowLeft /> Explore the other treks
+        </Link>
       </Reveal>
     </section>
   );

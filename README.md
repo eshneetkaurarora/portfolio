@@ -1,5 +1,16 @@
 # React + TypeScript + Vite
 
+## Portfolio content
+
+Personal photos live in `public/photos/`. Trek entries and their photo captions
+are maintained in `src/data/trips.ts`; only confirmed photos are attached to a
+specific trek. Altitudes and uphill walking times are approximate route-guide
+figures, not personal tracking records; source links and the assumed route are
+included on each trip page. Dates are omitted until confirmed.
+
+Use Node.js 22.12+ (or 20.19+) for the current Vite toolchain.
+Run `npm ci`, then `npm run dev` to preview locally.
+
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
 Currently, two official plugins are available:

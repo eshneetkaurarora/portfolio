@@ -5,7 +5,6 @@ import { Link, useLocation } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
 
 const LINKS = [
-  { id: "about", label: "About" },
   { id: "experience", label: "Experience" },
   { id: "work", label: "Work" },
   { id: "leadership", label: "Leadership" },
@@ -18,19 +17,7 @@ export default function Navbar() {
   const location = useLocation();
   const isHome = location.pathname === "/";
   const [active, setActive] = useState("");
-  const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [lastY, setLastY] = useState(0);
-
-  useEffect(() => {
-    const onScroll = () => {
-      const y = window.scrollY;
-      setHidden(y > lastY && y > 200);
-      setLastY(y);
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [lastY]);
 
   useEffect(() => {
     if (!isHome) {
@@ -53,8 +40,6 @@ export default function Navbar() {
   return (
     <>
     <motion.header
-      animate={{ y: hidden ? -100 : 0 }}
-      transition={{ duration: 0.35, ease: "easeInOut" }}
       className="fixed top-0 left-0 right-0 z-40 border-b border-border/60 bg-bg/70 backdrop-blur-lg"
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">

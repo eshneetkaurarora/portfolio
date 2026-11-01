@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { FiCheck, FiCopy, FiLinkedin, FiMail } from "react-icons/fi";
-import MagneticButton from "./MagneticButton";
+import { FiArrowUpRight, FiCheck, FiCopy, FiLinkedin, FiMail } from "react-icons/fi";
 import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
 
 const EMAIL = "eshneetkaurarora@gmail.com";
+const LINKEDIN = "https://www.linkedin.com/in/eshneetkaurarora";
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
@@ -17,34 +17,58 @@ export default function Contact() {
 
   return (
     <section id="contact" className="mx-auto max-w-6xl px-6 py-28">
-      <SectionHeading index="06" title="Get in Touch" blurb="Open to conversations about roles, MEM/MISM, or a good trek recommendation." />
+      <SectionHeading
+        index="06"
+        title="Get in Touch"
+        blurb="Open to new opportunities and good conversations."
+      />
 
-      <Reveal className="flex flex-col items-start gap-6 rounded-2xl border border-border bg-surface p-8 shadow-[var(--shadow-glow)] sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <p className="text-lg font-semibold text-text">Let's talk.</p>
-          <p className="mt-1 text-sm text-muted">I usually reply within a day or two.</p>
+      <Reveal className="grid gap-8 rounded-2xl border border-border bg-surface p-8 shadow-[var(--shadow-glow)] md:grid-cols-2 md:p-10">
+        {/* Left: invitation */}
+        <div className="flex flex-col justify-center">
+          <p className="text-3xl font-bold text-text">Let's talk.</p>
+          <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted">
+            Whether it's a role, a project, or a chat about mentoring or mountains, my inbox is always open.
+          </p>
         </div>
 
-        <div className="flex flex-wrap gap-3">
-          <MagneticButton
+        {/* Right: contact rows */}
+        <div className="flex flex-col gap-3">
+          <button
             onClick={copyEmail}
-            className="flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white"
+            data-cursor="hover"
+            className="group flex items-center gap-4 rounded-xl border border-border bg-bg p-4 text-left transition-colors hover:border-accent/60"
           >
-            {copied ? <FiCheck /> : <FiCopy />}
-            {copied ? "Copied!" : EMAIL}
-          </MagneticButton>
-          <MagneticButton
-            href={`mailto:${EMAIL}`}
-            className="grid h-11 w-11 place-items-center rounded-full border border-border text-text hover:border-accent hover:text-accent"
+            <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-accent/10 text-accent">
+              <FiMail size={18} />
+            </span>
+            <span className="min-w-0 flex-1">
+              <span className="block text-xs font-medium uppercase tracking-widest text-muted">Email</span>
+              <span className="block truncate text-sm font-semibold text-text">{EMAIL}</span>
+            </span>
+            <span className="shrink-0 text-muted group-hover:text-accent">
+              {copied ? <FiCheck size={18} /> : <FiCopy size={16} />}
+            </span>
+          </button>
+
+          <a
+            href={LINKEDIN}
+            target="_blank"
+            rel="noreferrer"
+            data-cursor="hover"
+            className="group flex items-center gap-4 rounded-xl border border-border bg-bg p-4 transition-colors hover:border-accent/60"
           >
-            <FiMail size={17} />
-          </MagneticButton>
-          <MagneticButton
-            href="https://linkedin.com/in/eshneet-kaur-arora-3ba665191"
-            className="grid h-11 w-11 place-items-center rounded-full border border-border text-text hover:border-accent hover:text-accent"
-          >
-            <FiLinkedin size={17} />
-          </MagneticButton>
+            <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-accent/10 text-accent">
+              <FiLinkedin size={18} />
+            </span>
+            <span className="min-w-0 flex-1">
+              <span className="block text-xs font-medium uppercase tracking-widest text-muted">LinkedIn</span>
+              <span className="block truncate text-sm font-semibold text-text">in/eshneetkaurarora</span>
+            </span>
+            <span className="shrink-0 text-muted group-hover:text-accent">
+              <FiArrowUpRight size={18} />
+            </span>
+          </a>
         </div>
       </Reveal>
     </section>

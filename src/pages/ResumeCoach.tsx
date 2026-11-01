@@ -28,9 +28,8 @@ export default function ResumeCoach() {
         <p className="mb-3 font-mono text-sm uppercase tracking-widest text-accent">Side Project</p>
         <h1 className="text-3xl font-bold tracking-tight md:text-4xl">Resume Coach</h1>
         <p className="mt-3 max-w-2xl text-muted">
-          Built out of the NER pipeline I wrote at STMicroelectronics, repurposed into something my Team Everest
-          mentees can actually use — paste your resume bullets and get specific, rule-based feedback on what's
-          weak and why.
+          I built this from the NER pipeline I wrote at STMicroelectronics, so my Team Everest mentees can
+          use it. Paste your resume bullets and get clear, rule-based feedback on what's weak and why.
         </p>
       </Reveal>
 

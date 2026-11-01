@@ -1,4 +1,3 @@
-import About from "../components/About";
 import BeyondWork from "../components/BeyondWork";
 import Contact from "../components/Contact";
 import Experience from "../components/Experience";
@@ -11,7 +10,6 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <About />
       <Experience />
       <Work />
       <Leadership />

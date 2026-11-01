@@ -1,39 +1,58 @@
-const ROW_ONE = ["React.js", "TypeScript", "JavaScript", "Next.js", "HTML", "CSS", "Bootstrap"];
-const ROW_TWO = ["Python", "C/C++", "spaCy / NLP", "Figma", "Jest", "Git", "MATLAB", "A/B Testing"];
+import { FiCode, FiLayers, FiTool } from "react-icons/fi";
+import Reveal from "./Reveal";
+import SectionHeading from "./SectionHeading";
 
-function MarqueeRow({ items, reverse = false }: { items: string[]; reverse?: boolean }) {
-  const doubled = [...items, ...items];
-  return (
-    <div className="flex overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_10%,black_90%,transparent)]">
-      <div
-        className="flex shrink-0 gap-4 py-2"
-        style={{
-          animation: `${reverse ? "marquee-reverse" : "marquee"} 28s linear infinite`,
-        }}
-      >
-        {doubled.map((item, i) => (
-          <span
-            key={`${item}-${i}`}
-            className="whitespace-nowrap rounded-full border border-border bg-surface px-5 py-2.5 font-mono text-sm text-text/90"
-          >
-            {item}
-          </span>
-        ))}
-      </div>
-      <style>{`
-        @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-        @keyframes marquee-reverse { from { transform: translateX(-50%); } to { transform: translateX(0); } }
-      `}</style>
-    </div>
-  );
-}
+const GROUPS = [
+  {
+    icon: FiCode,
+    label: "Languages",
+    items: ["TypeScript", "JavaScript", "Python", "C/C++", "MATLAB"],
+  },
+  {
+    icon: FiLayers,
+    label: "Frameworks & Libraries",
+    items: ["React.js", "Next.js", "spaCy / NLP", "Jest", "Bootstrap"],
+  },
+  {
+    icon: FiTool,
+    label: "Tools & Practices",
+    items: ["Git", "Figma", "System Design", "Agile / Scrum", "HTML / CSS"],
+  },
+];
 
 export default function Skills() {
   return (
-    <section id="skills" className="mx-auto max-w-6xl px-6 py-16">
-      <div className="space-y-4">
-        <MarqueeRow items={ROW_ONE} />
-        <MarqueeRow items={ROW_TWO} reverse />
+    <section id="skills" className="mx-auto max-w-6xl px-6 py-28">
+      <SectionHeading index="05" title="Toolkit" blurb="The languages, frameworks, and tools I reach for most." />
+
+      <div className="grid gap-5 sm:grid-cols-3">
+        {GROUPS.map((group, i) => {
+          const Icon = group.icon;
+          return (
+            <Reveal
+              key={group.label}
+              delay={i * 0.08}
+              className="rounded-2xl border border-border bg-surface p-6 transition-colors hover:border-accent/50"
+            >
+              <div className="mb-4 flex items-center gap-3">
+                <span className="grid h-10 w-10 place-items-center rounded-full bg-accent/10 text-accent">
+                  <Icon size={17} />
+                </span>
+                <h3 className="font-mono text-xs uppercase tracking-widest text-text">{group.label}</h3>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {group.items.map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full border border-border bg-bg px-3 py-1.5 text-sm text-text/90"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </Reveal>
+          );
+        })}
       </div>
     </section>
   );
