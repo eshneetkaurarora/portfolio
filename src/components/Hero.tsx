@@ -85,14 +85,16 @@ export default function Hero() {
             Creative Cloud Desktop experience at Adobe.
           </p>
           <p className="text-sm md:text-base">
-            At Oracle, I put my hand up to help scope a brand new module. It was
-            the first time I started from a blank page, and it is where my interest in product management began.
+            I&apos;m from Udaipur, Rajasthan, the city of lakes. I studied Electrical Engineering with a
+            minor in Computer Science at Thapar Institute. I started with circuits and kept reaching
+            toward code, and that mix of hardware thinking and software is still how I build.
           </p>
           <p className="flex items-start gap-2 text-sm md:text-base">
             <FiCompass className="mt-1 shrink-0 text-accent" />
             <span>
-              I like to understand the person I&apos;m building for. Outside work, you&apos;ll usually find me
-              on a mountain trail with my camera, dancing, or helping someone find their feet.
+              I&apos;m a curious, happy person who likes to understand the person I&apos;m building for.
+              Outside work, you&apos;ll usually find me on a mountain trail with my camera, dancing, or
+              helping someone find their feet.
             </span>
           </p>
         </motion.div>
@@ -122,16 +124,15 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.7 }}
-          className="mx-auto w-full max-w-sm overflow-hidden rounded-2xl border border-border bg-surface shadow-[var(--shadow-glow)] md:max-w-none"
+          className="mx-auto w-full max-w-xs overflow-hidden rounded-2xl border border-border bg-surface shadow-[var(--shadow-glow)]"
         >
           <img
             src="/photos/hero/portrait.jpg"
             alt="Portrait of Eshneet smiling in a pink sweater and a floral headband"
             width={1179}
             height={1356}
-            className="aspect-[4/5] w-full object-cover object-[50%_25%]"
+            className="aspect-square w-full object-cover object-[50%_25%]"
           />
-          <figcaption className="px-6 py-4 text-sm text-muted">Engineer, mentor, and mountain person.</figcaption>
         </motion.figure>
       </div>
 

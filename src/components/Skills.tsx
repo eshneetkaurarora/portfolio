@@ -5,27 +5,27 @@ import SectionHeading from "./SectionHeading";
 const GROUPS = [
   {
     icon: FiCode,
-    label: "Languages",
-    items: ["TypeScript", "JavaScript", "Python", "C/C++", "MATLAB"],
+    label: "Languages & Frameworks",
+    items: ["Python", "C++", "SQL", "TypeScript", "JavaScript", "HTML/CSS", "React.js", "Next.js", "Jest"],
   },
   {
     icon: FiLayers,
-    label: "Frameworks & Libraries",
-    items: ["React.js", "Next.js", "spaCy / NLP", "Jest", "Bootstrap"],
+    label: "AI & Data",
+    items: ["Generative AI", "LLMs", "AI Agents", "Prompt Engineering", "NLP (spaCy)", "Data Analytics"],
   },
   {
     icon: FiTool,
-    label: "Tools & Practices",
-    items: ["Git", "Figma", "System Design", "Agile / Scrum", "HTML / CSS"],
+    label: "Product",
+    items: ["Product Ideation", "Requirements Gathering", "User Research", "UX/UI Design", "Stakeholder Management"],
   },
 ];
 
 export default function Skills() {
   return (
     <section id="skills" className="mx-auto max-w-6xl px-6 py-28">
-      <SectionHeading index="05" title="Toolkit" blurb="The languages, frameworks, and tools I reach for most." />
+      <SectionHeading index="05" title="Toolkit" blurb="The languages, frameworks, AI, and product skills I bring to my work." />
 
-      <div className="grid gap-5 sm:grid-cols-3">
+      <div className="grid gap-5 lg:grid-cols-3">
         {GROUPS.map((group, i) => {
           const Icon = group.icon;
           return (
@@ -35,7 +35,7 @@ export default function Skills() {
               className="rounded-2xl border border-border bg-surface p-6 transition-colors hover:border-accent/50"
             >
               <div className="mb-4 flex items-center gap-3">
-                <span className="grid h-10 w-10 place-items-center rounded-full bg-accent/10 text-accent">
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-accent/10 text-accent">
                   <Icon size={17} />
                 </span>
                 <h3 className="font-mono text-xs uppercase tracking-widest text-text">{group.label}</h3>

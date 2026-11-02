@@ -19,12 +19,33 @@ export default function WhiteboardPost() {
 
       <Reveal delay={0.12} className="prose-content mt-10 space-y-5 text-[15px] leading-relaxed text-text/90 md:text-base">
         <p>
-          About two years into my time at Oracle, my manager asked the team if anyone wanted to volunteer for a new module that was being scoped. We would be helping build a proof of concept (POC). I volunteered straight away. Until then, every project I had worked on came with the problem already defined. Someone else had decided what to build, and my job was to work out how. This was the first time I could start something from scratch, and that is what pulled me in.
+          About two years into my time at Oracle, my manager asked the team if anyone wanted to join a new module being scoped as a proof of concept. I volunteered. It didn&apos;t exist yet, and I wanted to see how something comes into being and be part of building it from scratch.
         </p>
 
         <p>
           The module was part of a SaaS rule-creation platform. It had to let people who don&apos;t write code create and manage business rules on their own. There was nothing existing to build on. All we had was a whiteboard and a meeting with the engineering director.
         </p>
+
+        <figure className="overflow-hidden rounded-2xl border border-border bg-surface">
+          <a
+            href="/photos/writing/early-module-diagram.jpg"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="View the early module architecture sketch at full size in a new tab"
+          >
+            <img
+              src="/photos/writing/early-module-diagram.jpg"
+              alt="Early architecture sketch connecting the SaaS application environment, configuration REST endpoints, and identity services"
+              width={1197}
+              height={674}
+              loading="lazy"
+              className="h-auto w-full"
+            />
+          </a>
+          <figcaption className="px-5 py-3 text-sm text-muted">
+            An early architecture sketch from the module&apos;s proof-of-concept phase.
+          </figcaption>
+        </figure>
 
         <p>
           I&apos;ll be honest, that first meeting was uncomfortable. I was used to getting a clear problem, and now I had to figure out what the problem even was. I caught myself reaching for the safe option, which was to sketch something similar to a system I had already seen. Then I stopped and asked a different question: who is actually going to use this, and what does &quot;done&quot; mean to them?
@@ -43,7 +64,7 @@ export default function WhiteboardPost() {
         </p>
 
         <p>
-          That is where my interest in product management began. I realised I enjoyed asking what we should build, and why, as much as building it. I still love building things. But I now see that the work starts before the first line of code, and it doesn&apos;t end when the feature ships. I want to keep growing into someone who can take on a vague problem, ask better questions first, and keep the people who will use the product in mind.
+          That is where my interest in product management began. I realised I enjoyed asking what we should build, and why, as much as building it. I still love building things. But I now see that the work starts before the first line of code, and it doesn&apos;t end when the feature ships.
         </p>
       </Reveal>
     </article>

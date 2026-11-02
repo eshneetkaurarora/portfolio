@@ -44,7 +44,7 @@ export default function Navbar() {
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link to={isHome ? "#top" : "/"} data-cursor="hover" className="font-mono text-lg font-bold tracking-tight">
-          <span className="text-gradient">{"<EA />"}</span>
+          <span className="text-gradient">{"<EKA />"}</span>
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">

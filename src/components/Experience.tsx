@@ -16,12 +16,12 @@ const ROLES: Role[] = [
     company: "Adobe",
     title: "Member of Technical Staff 2",
     place: "Noida",
-    period: "Dec 2025 to Present",
+    period: "Nov 2025 to Present",
     bullets: [
-      "Build the Apps UI in Creative Cloud Desktop and the framework behind it, so people can find and manage their Adobe apps.",
-      "Built Uno, a notification system that prompts users to keep their Adobe apps up to date. In the quarter it shipped, quarter-over-quarter revenue growth rose from 6% to 16%.",
-      "Working on Patrol Agent, an in-development agent that takes a Jira issue to a pull request ready for review.",
-      "Work on a part of Creative Cloud Desktop, in a product line that generates $16M in revenue.",
+      "Build the Apps UI and application-management framework in Creative Cloud Desktop, where people find, install and manage their Adobe apps.",
+      "Built UNO, an update notifier that prompts users to keep their Adobe apps current. Click-through on update prompts has risen with each rollout step, to 29%.",
+      "Built Patrol Agent, an AI agent that takes a Jira issue to a pull request with an evidence-backed root cause and a proposed fix for review. It has solved 100+ production incidents.",
+      "Contribute to AI features in Creative Cloud Desktop, including the AI troubleshooting experience and locally run AI models.",
     ],
   },
   {
@@ -45,8 +45,8 @@ const ROLES: Role[] = [
     place: "Greater Noida",
     period: "Feb 2023 to Jul 2023",
     bullets: [
-      "Led development of a resume-parsing app in Python as a Software Development Intern.",
-      "Used spaCy for NLP and named entity recognition to extract candidate information from resumes at 84% efficiency.",
+      "Led development of a resume-checker application in Python, used by the HR team to speed up resume screening.",
+      "Used spaCy and Named Entity Recognition to extract key candidate information from resumes with 84% accuracy, improving parsing reliability.",
     ],
   },
 ];

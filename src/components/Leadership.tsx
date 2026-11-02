@@ -1,4 +1,4 @@
-import { FiAward, FiHeart, FiUserCheck, FiUsers } from "react-icons/fi";
+import { FiAward, FiHeart, FiUsers } from "react-icons/fi";
 import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
 
@@ -57,22 +57,6 @@ const ITEMS: { icon: typeof FiHeart; date: string; title: string; org: string; p
       {
         lead: "Foundation for a College Education",
         text: "mock interviews for prospective students, with clear feedback on how ready they are and how they communicate.",
-      },
-    ],
-  },
-  {
-    icon: FiUserCheck,
-    date: "Ongoing",
-    title: "Giving Back at Adobe",
-    org: "Adobe",
-    points: [
-      {
-        lead: "1:1 Career Mentor",
-        text: "mentored a final-year student through her job search, covering her resume, interview prep, and confidence.",
-      },
-      {
-        lead: "Dance Mentor",
-        text: "mentor dancers in Adobe's internal dance community.",
       },
     ],
   },

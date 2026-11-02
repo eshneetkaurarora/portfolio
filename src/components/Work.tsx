@@ -91,7 +91,7 @@ const CASE_STUDIES: CaseStudy[] = [
       "Runs entirely client-side, so nothing is uploaded and mentees can paste anything without a second thought.",
       "Flags weak verbs, missing numbers, passive voice, and filler phrases line by line.",
     ],
-    impact: ["Live, working tool: try it with your own resume"],
+    impact: ["Helped mentees get their first resume reviews and see where they could improve"],
     tags: ["TypeScript", "NLP Heuristics", "Mentorship"],
   },
   {
@@ -103,7 +103,7 @@ const CASE_STUDIES: CaseStudy[] = [
     ],
     impact: ["A running log of real trips"],
     tags: ["React", "Photography", "Personal"],
-    link: { to: "http://localhost:5174", label: "Check it out", external: true },
+    link: { to: "https://tripdiaries.netlify.app/", label: "Check it out", external: true },
   },
 ];
 
